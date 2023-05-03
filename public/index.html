@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website</title>
+</head>
+<body>
+  <h1>Website</h1>
+
+  <button id="getData">Get Data</button>
+  <button id="sendData">Send Data</button>
+
+  <script>
+    // Function to handle GET request
+    function getData() {
+      fetch('/api/data')
+        .then(response => response.json())
+        .then(data => {
+          console.log(data); // Process the response from the server
+        })
+        .catch(error => {
+          console.log('Error:', error);
+        });
+    }
+
+    // Function to handle POST request
+    function sendData() {
+      const dataToSend = { message: 'Hello from the website!' };
+
+      fetch('/api/data', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dataToSend)
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data); // Process the response from the server
+        })
+        .catch(error => {
+          console.log('Error:', error);
+        });
+    }
+
+    // Event listeners for the buttons
+    document.getElementById('getData').addEventListener('click', getData);
+    document.getElementById('sendData').addEventListener('click', sendData);
+  </script>
+</body>
+</html>
