@@ -26,3 +26,7 @@ app.use(express.static('public'));
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
+
+const server = app.listen(port, () => {
+  console.log(`Server is listening on port ${server.address().port}`);
+});
